@@ -1,12 +1,15 @@
 pipeline {
     agent any
 
+    stages {
+
         stage('Vérifier les DAGs Airflow') {
             steps {
                 echo 'Validation syntaxique des DAGs...'
                 sh 'python3 -m py_compile airflow/dags/*.py'
             }
         }
+
         stage('Build des images Docker') {
             steps {
                 echo 'Construction des images Docker...'
@@ -15,6 +18,7 @@ pipeline {
                 sh 'docker build -t frontend-ui ./frontend'
             }
         }
+
         stage('Lancement avec Docker Compose') {
             steps {
                 echo 'Lancement des services...'
@@ -23,4 +27,3 @@ pipeline {
         }
     }
 }
-
