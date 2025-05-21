@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Cloner le dépôt') {
-            steps {
-                git url: 'https://github.com/MorganBrizon/dsl-31-final-project.git'
-            }
-        }
         stage('Vérifier les DAGs Airflow') {
             steps {
                 echo 'Validation syntaxique des DAGs...'
