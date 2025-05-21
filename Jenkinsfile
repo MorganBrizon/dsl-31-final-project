@@ -6,6 +6,7 @@ pipeline {
     }
 
     stages {
+
         stage('Vérifier les DAGs Airflow') {
             steps {
                 echo 'Validation syntaxique des DAGs...'
@@ -24,7 +25,7 @@ pipeline {
 
         stage('Lancement avec Docker Compose') {
             steps {
-                echo 'Lancement des services...'
+                echo 'Lancement des services avec docker-compose...'
                 sh 'docker-compose up -d'
             }
         }
